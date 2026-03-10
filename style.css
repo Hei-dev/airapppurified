@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    overflow-y: hidden;
+    padding-bottom: 70px;
+}
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+}
+main {
+    padding: 1rem;
+    max-width: 800px;
+    margin: auto;
+}
+section{
+    overflow-y: auto;
+}
+
+.charts-container { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+.chart-box { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); height: 300px; }
+
+.control-panel { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+.controls { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem;}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #a2c4db;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    transition:
+    background 0.3s;
+}
+.btn:hover { background-color: #76b3db; }
+.btn.auto {
+    background-color: #3599db;
+    color:white;
+}
+.btn.auto:hover { background-color: #4ba1db; }
+#statusMessage { font-size: 0.9rem; color: #7f8c8d; }
+
+/* View toggling and animations */
+.hidden { display: none !important; }
+.view-section { animation: fadeIn 0.3s ease-in-out; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bottom Navigation Bar Styles */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 0.5rem 0;
+    z-index: 1000;
+    /* Respect safe areas on modern mobile devices (like iPhones with notches) */
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom)); 
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #bdc3c7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.nav-btn.active {
+    color: #3498db;
+    font-weight: bold;
+}

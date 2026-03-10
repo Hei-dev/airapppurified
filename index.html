@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Air Purifier Control</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Air Purifier Dashboard</h1>
+    </header>
+
+    <main>
+        <section id="dashboardView" class="view-section">
+            <div class="charts-container">
+                <div class="chart-box">
+                    <canvas id="aqiChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <canvas id="tempHumChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="controlView" class="view-section hidden">
+            <div class="control-panel">
+                <h2>Manual Fan Override</h2>
+                <div class="controls">
+                    <button onclick="setFanSpeed(0)" class="btn auto">Auto Mode</button>
+                    <button onclick="setFanSpeed(1)" class="btn">Low</button>
+                    <button onclick="setFanSpeed(2)" class="btn">Medium</button>
+                    <button onclick="setFanSpeed(3)" class="btn">High</button>
+                </div>
+                <p id="statusMessage">System status: Live Data Connected</p>
+            </div>
+        </section>
+        
+        <section id="settingsView" class="view-section hidden">
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-target="dashboardView">
+            📊 Dashboard
+        </button>
+        <button class="nav-btn" data-target="controlView">
+            ⚙️ Controls
+        </button>
+        <button class="nav-btn" data-target="settingsView">
+            🛠️ Settings
+        </button>
+    </nav>
+
+    <script src="app.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+            .then(() => console.log("Service Worker Registered"));
+        }
+    </script>
+</body>
+</html>
